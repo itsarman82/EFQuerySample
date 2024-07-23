@@ -127,5 +127,24 @@ namespace EFQuerySample.Dal
                 Console.WriteLine($"Course :  {course.Name}");
             }
         }
+
+        // client vs server method
+
+        public void CourseClientVsServer()
+        {
+            var resualt = _context.Courses.Include(c => c.Tags)
+                .Select(c => new
+                {
+                    c.Id,
+                    c.Name,
+                    c.StartDate,
+                    Tags = string.Join(',', c.Tags)
+                });
+
+            foreach (var item in resualt)
+            {
+                Console.WriteLine($"{item.Name} : {item.Tags}");
+            }
+        }
     }
 }

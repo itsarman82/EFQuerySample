@@ -14,7 +14,9 @@ namespace EFQuerySample.UI
 
             CourseStoreRepository repository = new CourseStoreRepository(ctx);
 
-            repository.CourseShortInfoDtoSelectLoading();
+            PracticeRepo practiceRepo = new PracticeRepo(ctx);
+
+            practiceRepo.fifthPractice();
             Console.ReadKey();
         }
     }
